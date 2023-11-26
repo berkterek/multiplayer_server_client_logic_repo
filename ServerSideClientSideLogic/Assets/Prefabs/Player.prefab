@@ -100,6 +100,9 @@ MonoBehaviour:
   _move: {fileID: -1680190386980627800, guid: d6ba81b3a4ae6524c8cb7bbd8e2c8f58, type: 3}
   _transform: {fileID: 8124778973189970033}
   _speed: 5
+  _renderer: {fileID: 5325057415798717765}
+  _color: {r: 0, g: 0, b: 0, a: 1}
+  _score: 0
 --- !u!1 &2907041270203985140
 GameObject:
   m_ObjectHideFlags: 0

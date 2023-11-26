@@ -7,6 +7,9 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] InputActionReference _move;
     [SerializeField] Transform _transform;
     [SerializeField] float _speed;
+    [SerializeField] SpriteRenderer _renderer;
+    [SerializeField] Color _color;
+    [SerializeField] int _score = 0;
 
     Vector2 _direction;
     Vector3 _movement;
@@ -18,7 +21,13 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner) return;
+        if (!IsOwner)
+        {
+            _renderer.color = Color.red;
+            return;
+        }
+
+        _renderer.color = Color.blue;
         
         _move.action.Enable();
 
