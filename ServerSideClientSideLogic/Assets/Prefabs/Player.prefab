@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _move: {fileID: -1680190386980627800, guid: d6ba81b3a4ae6524c8cb7bbd8e2c8f58, type: 3}
+  _leftButton: {fileID: -2411333666248666426, guid: d6ba81b3a4ae6524c8cb7bbd8e2c8f58, type: 3}
+  _rightButton: {fileID: 4728294399558785274, guid: d6ba81b3a4ae6524c8cb7bbd8e2c8f58, type: 3}
   _transform: {fileID: 8124778973189970033}
   _speed: 5
   _renderer: {fileID: 5325057415798717765}
