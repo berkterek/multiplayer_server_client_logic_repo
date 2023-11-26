@@ -1,7 +1,8 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField] InputActionReference _move;
     [SerializeField] Transform _transform;
@@ -15,16 +16,19 @@ public class PlayerController : MonoBehaviour
         if (_transform == null) _transform = GetComponent<Transform>();
     }
 
-    void OnEnable()
+    public override void OnNetworkSpawn()
     {
+        if (!IsOwner) return;
+        
         _move.action.Enable();
 
         _move.action.performed += HandleOnMovement;
         _move.action.canceled += HandleOnMovement;
     }
 
-    void OnDisable()
+    public override void OnNetworkDespawn()
     {
+        if (!IsOwner) return;
         _move.action.Disable();
 
         _move.action.performed -= HandleOnMovement;
@@ -33,11 +37,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!IsOwner) return;
+        
         _movement = _speed * Time.deltaTime * _direction;
     }
 
     void FixedUpdate()
     {
+        if (!IsOwner) return;
+        
         if (_movement.Equals(Vector3.zero)) return;
         
         _transform.position += _movement;
